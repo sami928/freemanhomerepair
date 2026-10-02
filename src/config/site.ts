@@ -15,6 +15,8 @@ export const site = {
     tel: '+15035550142', // PLACEHOLDER — E.164 format, used for tel: and sms: links
   },
   email: 'hello@freemanhomeservices.com', // PLACEHOLDER
+  /** Every quote request is emailed here (see src/lib/leads.ts). */
+  leadEmail: 'zack@freeman-homeservices.com',
 
   /**
    * Oregon requires a Construction Contractors Board license for most paid

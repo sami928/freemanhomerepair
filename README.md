@@ -13,11 +13,10 @@ npm run build      # typecheck + production build to dist/
 ## Before launch checklist
 
 1. **Business details.** Edit `src/config/site.ts`: phone, email, domain, Oregon CCB license #, hours. Every value marked `PLACEHOLDER` needs replacing. (Oregon requires the CCB number on advertising.)
-2. **Lead destination.** Copy `.env.example` to `.env` and choose one option:
-   - `VITE_LEAD_ENDPOINT`: any endpoint that accepts a JSON POST (Formspree, a Zapier/Make webhook, or your own API). This is the fastest way to get leads into email or SMS.
-   - `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY`: run `supabase/migrations/001_leads.sql` first.
+2. **Lead destination.** Every quote request is emailed to `leadEmail` in `src/config/site.ts` (currently zack@freeman-homeservices.com) through [FormSubmit](https://formsubmit.co), with the customer's email as Reply-To. **The first submission sends an "Activate Form" email to that inbox. Click it once, or no lead emails are delivered.** Copy `.env.example` to `.env` to add more:
+   - `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY`: also save every lead to the Supabase `leads` table (run `supabase/migrations/001_leads.sql` first). A submission goes through if either the email or the Supabase insert works.
+   - `VITE_LEAD_ENDPOINT`: send leads only to this endpoint (Formspree, a Zapier/Make webhook, your own API), replacing both of the above.
 
-   With neither set, dev mode logs submissions to the console, and production shows an error asking the visitor to call.
 3. **Copy.** FAQ answers (`src/data/faqs.ts`) and the About page are placeholders. Confirm pricing and policies.
 4. **Analytics.** GA4 property `G-JDGPSR18GZ` is built in (`src/lib/analytics.ts`); set `VITE_GA_ID` only to use a different one. Call, text and email clicks and quote starts and submissions are tracked as GA4 events. `/thank-you` gives you a URL to count conversions in Google Ads.
 5. **Hosting.** Deep links need an SPA rewrite to `index.html`. The repo includes `public/.htaccess` (Apache/Hostinger), `public/_redirects` (Netlify) and `vercel.json` (Vercel).
