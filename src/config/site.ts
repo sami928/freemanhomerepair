@@ -14,7 +14,7 @@ export const site = {
     display: '(503) 555-0142', // PLACEHOLDER
     tel: '+15035550142', // PLACEHOLDER — E.164 format, used for tel: and sms: links
   },
-  email: 'hello@freemanhomeservices.com', // PLACEHOLDER
+  email: 'zack@freeman-homeservices.com',
   /** Every quote request is emailed here (see src/lib/leads.ts). */
   leadEmail: 'zack@freeman-homeservices.com',
 
