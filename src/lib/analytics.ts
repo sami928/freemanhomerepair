@@ -1,6 +1,6 @@
 /**
- * Conversion tracking. Calls go to GA4 when VITE_GA_ID is set and are
- * ignored otherwise, so components can track freely. Add Meta Pixel,
+ * Conversion tracking. Calls go to GA4 (property G-JDGPSR18GZ, or
+ * VITE_GA_ID if set), so components can track freely. Add Meta Pixel,
  * Google Ads conversions, etc. here without touching the components.
  */
 
@@ -21,7 +21,7 @@ export type ConversionEvent =
   | 'quote_error';
 
 export function initAnalytics() {
-  const id = import.meta.env.VITE_GA_ID;
+  const id = import.meta.env.VITE_GA_ID || 'G-JDGPSR18GZ';
   if (!id || window.gtag) return;
 
   const script = document.createElement('script');

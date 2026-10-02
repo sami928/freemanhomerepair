@@ -19,7 +19,7 @@ npm run build      # typecheck + production build to dist/
 
    With neither set, dev mode logs submissions to the console, and production shows an error asking the visitor to call.
 3. **Copy.** FAQ answers (`src/data/faqs.ts`) and the About page are placeholders. Confirm pricing and policies.
-4. **Analytics (optional).** Set `VITE_GA_ID`. Call, text and email clicks and quote starts and submissions are tracked as GA4 events. `/thank-you` gives you a URL to count conversions in Google Ads.
+4. **Analytics.** GA4 property `G-JDGPSR18GZ` is built in (`src/lib/analytics.ts`); set `VITE_GA_ID` only to use a different one. Call, text and email clicks and quote starts and submissions are tracked as GA4 events. `/thank-you` gives you a URL to count conversions in Google Ads.
 5. **Hosting.** Deep links need an SPA rewrite to `index.html`. The repo includes `public/.htaccess` (Apache/Hostinger), `public/_redirects` (Netlify) and `vercel.json` (Vercel).
 
 ## Where to make changes
