@@ -22,6 +22,12 @@ create table if not exists public.leads (
 
 alter table public.leads enable row level security;
 
+-- Newer Supabase projects don't expose new tables to the Data API
+-- automatically, so grant the website's anon role INSERT only (no SELECT,
+-- UPDATE or DELETE). RLS below still restricts what it can insert.
+grant usage on schema public to anon;
+grant insert on table public.leads to anon;
+
 -- The public site can only insert. Reading leads requires the service role
 -- (Supabase dashboard, an admin app, or an Edge Function).
 drop policy if exists "Website can submit leads" on public.leads;
