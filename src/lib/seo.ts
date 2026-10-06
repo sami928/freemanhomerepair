@@ -21,6 +21,9 @@ export function useSEO(path: string, meta: PageMeta) {
     setMeta('property', 'og:url', url);
     setMeta('property', 'og:type', 'website');
     setMeta('property', 'og:site_name', site.name);
+    setMeta('property', 'og:image', `${site.url}/og-image.jpg`);
+    setMeta('name', 'twitter:card', 'summary_large_image');
+    setMeta('name', 'twitter:image', `${site.url}/og-image.jpg`);
     setJsonLd(localBusinessSchema());
   }, [path, meta.title, meta.description, meta.noindex]);
 }
@@ -31,6 +34,8 @@ export function localBusinessSchema() {
     '@type': 'HomeAndConstructionBusiness',
     name: site.name,
     url: site.url,
+    logo: `${site.url}/brand/freeman-logo.png`,
+    image: `${site.url}/og-image.jpg`,
     telephone: site.phone.tel,
     email: site.email,
     address: {

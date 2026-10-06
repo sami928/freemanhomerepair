@@ -1,20 +1,38 @@
 import { site } from '@/config/site';
 
-export function Logo({ light = false }: { light?: boolean }) {
+const NAVY = '#1e3a5f';
+const GOLD = '#d4a534';
+
+/** The shield emblem from the Freeman logo, redrawn as SVG so it stays crisp at any size. */
+export function LogoMark({ className = 'h-11 w-auto' }: { className?: string }) {
   return (
-    <span className="flex items-center gap-2.5">
-      <svg viewBox="0 0 32 32" className="h-9 w-9 shrink-0" aria-hidden>
-        <rect width="32" height="32" rx="7" fill={light ? '#ffffff' : '#174337'} />
-        <path d="M8 17 16 9l8 8v7a1 1 0 0 1-1 1h-4v-5h-6v5H9a1 1 0 0 1-1-1z" fill={light ? '#174337' : '#ffffff'} />
-        <path d="M16 9 6 18.5M16 9l10 9.5" stroke="#ff8a3d" strokeWidth="2.4" strokeLinecap="round" />
-      </svg>
-      <span className="leading-none">
-        <span className={`block font-display text-lg font-extrabold tracking-tight ${light ? 'text-white' : 'text-brand-900'}`}>
-          Freeman
-        </span>
-        <span className={`block text-[11px] font-semibold uppercase tracking-[0.16em] ${light ? 'text-brand-200' : 'text-brand-600'}`}>
-          Home Services
-        </span>
+    <svg viewBox="0 0 100 120" className={className} aria-hidden>
+      <path d="M50 2 96 14v46c0 28-20 46-46 58C24 106 4 88 4 60V14Z" fill={NAVY} />
+      <path d="M50 9.5 89 19.5V60c0 24-17 39-39 50.5C28 99 11 84 11 60V19.5Z" fill="none" stroke={GOLD} strokeWidth="2.6" />
+      <g fill={GOLD} stroke={GOLD} strokeLinecap="round">
+        {/* hammer */}
+        <line x1="31" y1="80" x2="62" y2="49" strokeWidth="7.5" />
+        <rect x="49" y="38.5" width="32" height="12" rx="1.5" stroke="none" transform="rotate(45 65 44.5)" />
+        {/* wrench */}
+        <line x1="36" y1="46" x2="68" y2="79" strokeWidth="7.5" />
+        <circle cx="36" cy="46" r="11" stroke="none" />
+      </g>
+      {/* wrench jaw opening */}
+      <rect x="32.5" y="30" width="7" height="13" fill={NAVY} transform="rotate(-45 36 46)" />
+    </svg>
+  );
+}
+
+/** Full logo lockup: emblem + FREEMAN / gold rule / HOME SERVICES. */
+export function Logo({ light = false }: { light?: boolean }) {
+  const ink = light ? 'text-white' : 'text-brand-800';
+  return (
+    <span className="flex items-center gap-3">
+      <LogoMark className="h-11 w-auto shrink-0 sm:h-12" />
+      <span className="flex flex-col leading-none" aria-hidden>
+        <span className={`font-display text-[22px] font-bold tracking-[0.06em] sm:text-2xl ${ink}`}>FREEMAN</span>
+        <span className="my-[5px] h-[2px] w-full bg-accent-500" />
+        <span className={`font-display text-[9.5px] font-semibold tracking-[0.42em] sm:text-[10.5px] ${ink}`}>HOME SERVICES</span>
       </span>
       <span className="sr-only">{site.name}</span>
     </span>

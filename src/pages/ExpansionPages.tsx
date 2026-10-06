@@ -49,7 +49,7 @@ export function TeamPage() {
                 </div>
               )}
               <h2 className="mt-4 text-lg font-semibold text-slate-900">{m.name}</h2>
-              <p className="text-sm font-medium text-accent-600">{m.role}</p>
+              <p className="text-sm font-medium text-accent-700">{m.role}</p>
               <p className="mt-2 text-sm text-slate-600">{m.bio}</p>
             </div>
           ))}

@@ -4,37 +4,40 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Deep evergreen — Pacific Northwest, trustworthy, not "corporate blue".
+        // Navy — sampled from the logo shield and wordmark (#1e3a5f = 800).
         brand: {
-          50: '#eef7f3',
-          100: '#d5ece2',
-          200: '#acd8c5',
-          300: '#7bbea3',
-          400: '#4c9f80',
-          500: '#2f8366',
-          600: '#226952',
-          700: '#1c5443',
-          800: '#174337',
-          900: '#12352c',
-          950: '#0a201a',
+          50: '#f1f5fa',
+          100: '#dfe8f2',
+          200: '#bfd0e4',
+          300: '#93b0d0',
+          400: '#6189b6',
+          500: '#3f6a9a',
+          600: '#2f5480',
+          700: '#26466c',
+          800: '#1e3a5f',
+          900: '#172d4a',
+          950: '#0e1d31',
         },
-        // Safety orange — reserved for calls to action so they always stand out.
+        // Gold — sampled from the logo tools and rule (#d4a534 = 500).
+        // Reserved for calls to action. Gold is light, so text on it must be
+        // navy (brand-950), never white; use 700+ for gold text on white.
         accent: {
-          50: '#fff6ed',
-          100: '#ffead4',
-          200: '#ffd1a8',
-          300: '#ffb070',
-          400: '#ff8a3d',
-          500: '#f76b15',
-          600: '#e8540b',
-          700: '#c03f0b',
-          800: '#983311',
-          900: '#7a2c11',
+          50: '#fdf8ec',
+          100: '#faefcf',
+          200: '#f4dc9c',
+          300: '#ecc766',
+          400: '#e2b544',
+          500: '#d4a534',
+          600: '#b98a22',
+          700: '#8f6618',
+          800: '#7a541d',
+          900: '#65451c',
         },
       },
       fontFamily: {
         sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        display: ['"Archivo"', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        // Serif to match the logo wordmark.
+        display: ['"Noto Serif"', 'Georgia', 'ui-serif', 'serif'],
       },
     },
   },

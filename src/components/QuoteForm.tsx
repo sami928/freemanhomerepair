@@ -210,7 +210,7 @@ export function QuoteForm({
             </div>
           </div>
 
-          <button type="submit" className="flex w-full items-center justify-center gap-2 rounded-lg bg-accent-500 px-6 py-3.5 text-base font-semibold text-white shadow-sm transition-colors hover:bg-accent-600">
+          <button type="submit" className="flex w-full items-center justify-center gap-2 rounded-lg bg-accent-500 px-6 py-3.5 text-base font-semibold text-brand-950 shadow-sm transition-colors hover:bg-accent-400">
             Next: your details <ArrowRight className="h-5 w-5" aria-hidden />
           </button>
         </div>
@@ -334,7 +334,7 @@ export function QuoteForm({
             <button
               type="submit"
               disabled={submitting}
-              className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-accent-500 px-6 py-3.5 text-base font-semibold text-white shadow-sm transition-colors hover:bg-accent-600 disabled:opacity-70"
+              className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-accent-500 px-6 py-3.5 text-base font-semibold text-brand-950 shadow-sm transition-colors hover:bg-accent-400 disabled:opacity-70"
             >
               {submitting ? (
                 <>

@@ -19,7 +19,7 @@ export function MobileCtaBar() {
         <MessageSquare className="h-5 w-5" aria-hidden />
         Text
       </a>
-      <Link to="/#quote" className={`${item} bg-accent-500 text-white`}>
+      <Link to="/#quote" className={`${item} bg-accent-500 text-brand-950`}>
         <ClipboardList className="h-5 w-5" aria-hidden />
         Free Quote
       </Link>

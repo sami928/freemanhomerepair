@@ -106,10 +106,10 @@ export function HomePage() {
           <ol className="mt-12 grid gap-8 md:grid-cols-3">
             {steps.map(({ icon: Icon, title, text }, i) => (
               <li key={title} className="relative text-center">
-                <div className="mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-accent-50 text-accent-600 ring-1 ring-accent-100">
+                <div className="mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-accent-50 text-accent-700 ring-1 ring-accent-100">
                   <Icon className="h-7 w-7" aria-hidden />
                 </div>
-                <p className="mt-4 text-sm font-bold uppercase tracking-wider text-accent-600">Step {i + 1}</p>
+                <p className="mt-4 text-sm font-bold uppercase tracking-wider text-accent-700">Step {i + 1}</p>
                 <h3 className="mt-1 text-xl font-semibold text-slate-900">{title}</h3>
                 <p className="mx-auto mt-2 max-w-xs text-slate-600">{text}</p>
               </li>
