@@ -11,8 +11,8 @@ export const site = {
   url: 'https://freemanhomeservices.com', // PLACEHOLDER — production domain
 
   phone: {
-    display: '(503) 555-0142', // PLACEHOLDER
-    tel: '+15035550142', // PLACEHOLDER — E.164 format, used for tel: and sms: links
+    display: '(503) 662-8487', // Google Voice — calls and texts
+    tel: '+15036628487', // E.164 format, used for tel: and sms: links
   },
   email: 'zack@freeman-homeservices.com',
   /** Every quote request is emailed here (see src/lib/leads.ts). */
