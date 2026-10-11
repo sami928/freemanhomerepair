@@ -14,7 +14,7 @@ npm run build      # typecheck + production build to dist/
 
 1. **Business details.** Edit `src/config/site.ts`: phone, email, domain, Oregon CCB license #, hours. Every value marked `PLACEHOLDER` needs replacing. (Oregon requires the CCB number on advertising.)
 2. **Lead destination.** Every quote request is emailed to `leadEmail` in `src/config/site.ts` (currently zack@freeman-homeservices.com) through [FormSubmit](https://formsubmit.co), with the customer's email as Reply-To. **The first submission sends an "Activate Form" email to that inbox. Click it once, or no lead emails are delivered.** Copy `.env.example` to `.env` to add more:
-   - `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY`: also save every lead to the Supabase `leads` table (run `supabase/migrations/001_leads.sql` first). A submission goes through if either the email or the Supabase insert works.
+   - `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY`: also save every lead to the Supabase `leads` table (run the files in `supabase/migrations/` in order first). A submission goes through if either the email or the Supabase insert works. Free Supabase projects pause after about a week without activity; `.github/workflows/supabase-keepalive.yml` pings the database every 3 days to prevent that.
    - `VITE_LEAD_ENDPOINT`: send leads only to this endpoint (Formspree, a Zapier/Make webhook, your own API), replacing both of the above.
 
 3. **Copy.** FAQ answers (`src/data/faqs.ts`) and the About page are placeholders. Confirm pricing and policies.
