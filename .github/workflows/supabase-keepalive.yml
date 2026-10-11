@@ -1,0 +1,45 @@
+# Keeps the free-tier Supabase project from auto-pausing.
+#
+# Supabase pauses free projects after ~7 days without activity, which makes
+# the quote form's database save fail. This job calls a tiny read-only
+# function (public.keepalive, see supabase/migrations/002_keepalive.sql)
+# every 3 days so the project always counts as active.
+#
+# The key below is the public "anon" key — the same one shipped in the
+# website's JavaScript — so it is safe to commit. It can only call
+# keepalive() and insert leads; it cannot read them.
+#
+# Note: GitHub disables scheduled workflows after 60 days with no commits to
+# the repo. If that happens, re-enable it from the Actions tab.
+
+name: Supabase keep-alive
+
+on:
+  schedule:
+    - cron: '17 15 */3 * *' # every 3 days, 15:17 UTC
+  workflow_dispatch: {}
+
+permissions: {}
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      SUPABASE_URL: ${{ vars.SUPABASE_URL || 'https://kloqiqoflpnaukifruug.supabase.co' }}
+      SUPABASE_ANON_KEY: ${{ vars.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imtsb3FpcW9mbHBuYXVraWZydXVnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA4OTc1NTQsImV4cCI6MjEwNjQ3MzU1NH0.7U-jqEOb9oR7Htv8mpAypNKRyiE7TMcxxywOnjR0T-0' }}
+    steps:
+      - name: Ping database
+        run: |
+          for attempt in 1 2 3; do
+            status=$(curl -sS -o response.txt -w '%{http_code}' -X POST \
+              "$SUPABASE_URL/rest/v1/rpc/keepalive" \
+              -H "apikey: $SUPABASE_ANON_KEY" \
+              -H "Authorization: Bearer $SUPABASE_ANON_KEY" \
+              -H 'Content-Type: application/json' -d '{}') || status=000
+            echo "Attempt $attempt: HTTP $status $(cat response.txt 2>/dev/null)"
+            [ "$status" = 200 ] && exit 0
+            sleep 30
+          done
+          echo "::error::Supabase did not respond. The project may be paused — restore it in the Supabase dashboard."
+          exit 1
