@@ -18,12 +18,6 @@ export const site = {
   /** Every quote request is emailed here (see src/lib/leads.ts). */
   leadEmail: 'zack@freeman-homeservices.com',
 
-  /**
-   * Oregon requires a Construction Contractors Board license for most paid
-   * repair work. Showing it builds trust and is required on advertising.
-   */
-  ccbNumber: '000000', // PLACEHOLDER
-
   address: {
     locality: 'Portland',
     region: 'OR',

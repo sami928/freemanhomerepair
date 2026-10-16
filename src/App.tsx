@@ -27,7 +27,7 @@ const staticRoutes: Record<string, () => Page> = {
     element: <HomePage />,
     meta: {
       title: `Portland Handyman & Home Repair Services ${suffix}`,
-      description: `Reliable handyman, home repair and maintenance across the Portland metro. Licensed & insured, upfront pricing. Call ${site.phone.display} or get a free quote online.`,
+      description: `Reliable handyman, home repair and maintenance across the Portland metro. Upfront pricing, no job too small. Call ${site.phone.display} or get a free quote online.`,
     },
   }),
   '/services': () => ({
@@ -40,7 +40,7 @@ const staticRoutes: Record<string, () => Page> = {
   }),
   '/about': () => ({
     element: <AboutPage />,
-    meta: { title: `About Us ${suffix}`, description: `${site.name} is a local, licensed and insured Portland home repair company.` },
+    meta: { title: `About Us ${suffix}`, description: `${site.name} is a local Portland home repair and maintenance company.` },
   }),
   '/contact': () => ({
     element: <ContactPage />,
@@ -76,7 +76,7 @@ function resolve(path: string): Page {
   if (service) {
     return {
       element: <ServicePage service={service} />,
-      meta: { title: `${service.name} in Portland, OR ${suffix}`, description: `${service.summary} Licensed & insured. Free quotes across the Portland metro.` },
+      meta: { title: `${service.name} in Portland, OR ${suffix}`, description: `${service.summary} Free quotes across the Portland metro.` },
     };
   }
 

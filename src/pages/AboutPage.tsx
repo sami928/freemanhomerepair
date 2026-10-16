@@ -21,7 +21,7 @@ export function AboutPage() {
               our own — protecting your floors, cleaning up after ourselves, and making sure the job is done right.
             </p>
             <p>
-              We’re growing, and every technician who joins the team is held to the same standard: licensed, insured,
+              We’re growing, and every technician who joins the team is held to the same standard: skilled,
               background-checked, and committed to great service.
             </p>
             {features.team && (

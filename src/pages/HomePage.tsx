@@ -10,7 +10,7 @@ import { Link } from '@/components/Link';
 import { ButtonLink } from '@/components/Button';
 import { SectionHeading, TrustBar, FaqList, CtaBanner } from '@/components/Sections';
 
-const heroPoints = ['Free, upfront quotes', 'Licensed & insured in Oregon', 'No job too small'];
+const heroPoints = ['Free, upfront quotes', 'Local to Portland', 'No job too small'];
 
 const steps = [
   { icon: ClipboardList, title: 'Tell us what needs fixing', text: 'Fill out the quick form, call or text. Photos help us quote faster.' },

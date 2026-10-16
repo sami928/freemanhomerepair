@@ -14,7 +14,6 @@ export function Footer() {
         <div>
           <Logo light />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-brand-200">{site.tagline}.</p>
-          <p className="mt-4 text-xs text-brand-300">Licensed &amp; insured · Oregon CCB #{site.ccbNumber}</p>
         </div>
 
         <div>

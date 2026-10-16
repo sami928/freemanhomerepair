@@ -1,5 +1,5 @@
 import { useState, type ReactNode } from 'react';
-import { ChevronDown, ShieldCheck, Clock, BadgeCheck, ThumbsUp } from 'lucide-react';
+import { ChevronDown, MapPin, Clock, BadgeCheck, ThumbsUp } from 'lucide-react';
 import type { Faq } from '@/data/faqs';
 import { site } from '@/config/site';
 import { ButtonLink } from './Button';
@@ -16,7 +16,7 @@ export function SectionHeading({ eyebrow, title, intro, center = false }: { eyeb
 }
 
 const trustPoints = [
-  { icon: ShieldCheck, title: 'Licensed & insured', text: `Oregon CCB #${site.ccbNumber}` },
+  { icon: MapPin, title: 'Locally owned', text: 'Portland-based, not a franchise' },
   { icon: Clock, title: 'On time, every time', text: 'Arrival windows we actually keep' },
   { icon: BadgeCheck, title: 'Upfront pricing', text: 'Know the price before we start' },
   { icon: ThumbsUp, title: 'Satisfaction guaranteed', text: 'Not right? We come back and fix it' },

@@ -16,14 +16,14 @@ export function Header({ path }: { path: string }) {
 
   return (
     <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur">
-      {/* Top strip: hours + license — trust signals before anything else */}
+      {/* Top strip: hours + offer — trust signals before anything else */}
       <div className="hidden bg-brand-900 text-xs text-brand-100 sm:block">
         <div className="container-x flex h-9 items-center justify-between">
           <span className="flex items-center gap-1.5">
             <Clock className="h-3.5 w-3.5" aria-hidden />
             {site.hours[0].days} {site.hours[0].time} · Serving the Portland metro
           </span>
-          <span>Licensed &amp; insured · OR CCB #{site.ccbNumber}</span>
+          <span>Free, no-obligation quotes</span>
         </div>
       </div>
 

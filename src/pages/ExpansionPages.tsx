@@ -36,7 +36,7 @@ export function ReviewsPage() {
 export function TeamPage() {
   return (
     <>
-      <PageHero eyebrow="Our team" title="The people behind the tools" intro="Every Freeman technician is licensed, insured and background-checked." />
+      <PageHero eyebrow="Our team" title="The people behind the tools" intro="Every Freeman technician is skilled, reliable and background-checked." />
       <section className="py-16">
         <div className="container-x grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {team.map((m) => (

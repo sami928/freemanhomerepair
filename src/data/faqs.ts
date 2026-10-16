@@ -7,10 +7,6 @@ export const faqs: Faq[] = [
     a: 'Most jobs are quoted up front as a flat price so there are no surprises. For open-ended lists we bill hourly with a clear estimate before we start. Quotes are always free.',
   },
   {
-    q: 'Are you licensed and insured?',
-    a: 'Yes. We’re licensed with the Oregon Construction Contractors Board and carry general liability insurance on every job.',
-  },
-  {
     q: 'How soon can you come out?',
     a: 'We reply to every request within one business day and can usually schedule within the week. Urgent leaks and safety issues get priority.',
   },
