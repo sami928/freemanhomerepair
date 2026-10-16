@@ -22,7 +22,7 @@ export function AboutPage() {
             </p>
             <p>
               We’re growing, and every technician who joins the team is held to the same standard: skilled,
-              background-checked, and committed to great service.
+              reliable, and committed to great service.
             </p>
             {features.team && (
               <p>
