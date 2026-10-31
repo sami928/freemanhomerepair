@@ -8,7 +8,7 @@ export const site = {
   name: 'Freeman Home Services',
   shortName: 'Freeman',
   tagline: 'Portland’s go-to crew for home repair & maintenance',
-  url: 'https://freemanhomeservices.com', // PLACEHOLDER — production domain
+  url: 'https://freeman-homeservices.com', // production domain — used for canonical URLs and social previews
 
   phone: {
     display: '(503) 662-8487', // Google Voice — calls and texts
@@ -55,6 +55,11 @@ export const features = {
   team: false,
   /** Show /careers and the "We're hiring" footer link. */
   careers: false,
+  /**
+   * Seasonal Christmas-light page (/christmas-lights), its nav link and the
+   * header promo. Turn off after the holidays; the page stays in the code.
+   */
+  holidayLights: true,
   /** Show the floating call / text / quote bar on mobile. */
   mobileCtaBar: true,
 } as const;

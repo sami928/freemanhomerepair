@@ -6,12 +6,20 @@ export type PageMeta = {
   title: string;
   description: string;
   noindex?: boolean;
+  /** Canonical path when it differs from the current path (e.g. an alias URL). */
+  canonicalPath?: string;
+  /** Extra page-specific structured data (Service, FAQPage, …). */
+  jsonLd?: object[];
 };
 
 /** Sets title, description, canonical, Open Graph and LocalBusiness JSON-LD. */
-export function useSEO(path: string, meta: PageMeta) {
+export function useSEO(path: string, pageMeta: PageMeta) {
+  // Route tables build a fresh meta object on every render; key on its content.
+  const key = JSON.stringify(pageMeta);
   useEffect(() => {
-    const url = `${site.url}${path === '/' ? '' : path}`;
+    const meta = JSON.parse(key) as PageMeta;
+    const canonical = meta.canonicalPath ?? path;
+    const url = `${site.url}${canonical === '/' ? '' : canonical}`;
     document.title = meta.title;
     setMeta('name', 'description', meta.description);
     setMeta('name', 'robots', meta.noindex ? 'noindex, nofollow' : 'index, follow');
@@ -24,8 +32,9 @@ export function useSEO(path: string, meta: PageMeta) {
     setMeta('property', 'og:image', `${site.url}/og-image.jpg`);
     setMeta('name', 'twitter:card', 'summary_large_image');
     setMeta('name', 'twitter:image', `${site.url}/og-image.jpg`);
-    setJsonLd(localBusinessSchema());
-  }, [path, meta.title, meta.description, meta.noindex]);
+    setJsonLd('jsonld-business', localBusinessSchema());
+    setJsonLd('jsonld-page', meta.jsonLd?.length ? meta.jsonLd : null);
+  }, [path, key]);
 }
 
 export function localBusinessSchema() {
@@ -72,9 +81,12 @@ function setLink(rel: string, href: string) {
   el.setAttribute('href', href);
 }
 
-function setJsonLd(data: object) {
-  const id = 'jsonld-business';
+function setJsonLd(id: string, data: object | null) {
   let el = document.getElementById(id) as HTMLScriptElement | null;
+  if (!data) {
+    el?.remove();
+    return;
+  }
   if (!el) {
     el = document.createElement('script');
     el.id = id;

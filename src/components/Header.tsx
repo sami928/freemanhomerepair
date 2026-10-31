@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Menu, X, Clock } from 'lucide-react';
-import { site } from '@/config/site';
+import { site, features } from '@/config/site';
 import { navItems } from '@/routes';
 import { Link } from './Link';
 import { Logo } from './Logo';
@@ -23,7 +23,13 @@ export function Header({ path }: { path: string }) {
             <Clock className="h-3.5 w-3.5" aria-hidden />
             {site.hours[0].days} {site.hours[0].time} · Serving the Portland metro
           </span>
-          <span>Free, no-obligation quotes</span>
+          {features.holidayLights ? (
+            <Link to="/christmas-lights" className="font-semibold text-accent-300 hover:text-accent-200">
+              Now booking Christmas light installs →
+            </Link>
+          ) : (
+            <span>Free, no-obligation quotes</span>
+          )}
         </div>
       </div>
 

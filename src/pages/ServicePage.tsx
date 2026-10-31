@@ -1,6 +1,6 @@
 import { CheckCircle2 } from 'lucide-react';
 import type { Service } from '@/data/services';
-import { services } from '@/data/services';
+import { services, serviceHref } from '@/data/services';
 import { QuoteForm } from '@/components/QuoteForm';
 import { Link } from '@/components/Link';
 import { PageHero, TrustBar, CtaBanner } from '@/components/Sections';
@@ -40,7 +40,7 @@ export function ServicePage({ service }: { service: Service }) {
             <h2 className="mt-12 font-display text-xl font-bold text-slate-900">Other services</h2>
             <div className="mt-4 flex flex-wrap gap-2">
               {others.map((s) => (
-                <Link key={s.slug} to={`/services/${s.slug}`} className="rounded-full border border-slate-200 px-4 py-2 text-sm font-medium text-slate-700 hover:border-brand-400 hover:text-brand-800">
+                <Link key={s.slug} to={serviceHref(s)} className="rounded-full border border-slate-200 px-4 py-2 text-sm font-medium text-slate-700 hover:border-brand-400 hover:text-brand-800">
                   {s.name}
                 </Link>
               ))}

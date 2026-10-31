@@ -8,6 +8,7 @@ export type NavItem = { path: string; label: string };
 
 export const navItems: NavItem[] = [
   { path: '/services', label: 'Services' },
+  ...(features.holidayLights ? [{ path: '/christmas-lights', label: 'Christmas Lights' }] : []),
   { path: '/service-area', label: 'Service Area' },
   { path: '/about', label: 'About' },
   ...(features.reviews ? [{ path: '/reviews', label: 'Reviews' }] : []),

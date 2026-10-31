@@ -12,6 +12,7 @@ import {
   Home,
   Layers,
   ClipboardCheck,
+  Sparkles,
 } from 'lucide-react';
 
 /**
@@ -31,6 +32,8 @@ export type Service = {
   jobs: string[];
   /** Show on the home page grid. */
   featured?: boolean;
+  /** Dedicated landing page that replaces the generic /services/<slug> page. */
+  href?: string;
 };
 
 export const services: Service[] = [
@@ -142,6 +145,16 @@ export const services: Service[] = [
     jobs: ['Fall winterizing', 'Spring tune-ups', 'Filter & detector changes', 'Caulk & seal inspection', 'Rental turnover repairs'],
   },
   {
+    slug: 'holiday-lighting',
+    name: 'Christmas & Permanent Lighting',
+    icon: Sparkles,
+    summary: 'Govee Prism permanent lights installed along your roofline — holidays and year-round.',
+    description:
+      'Professional installation of Govee Permanent Outdoor Lights Prism along your roofline and eaves. Install once, control from your phone, and never climb a ladder for Christmas lights again.',
+    jobs: ['Roofline & eave lighting', 'Govee Prism installation', 'App setup & schedules', 'Holiday & everyday scenes'],
+    href: '/christmas-lights',
+  },
+  {
     slug: 'other',
     name: 'Something Else',
     icon: Wrench,
@@ -153,6 +166,10 @@ export const services: Service[] = [
 ];
 
 export const featuredServices = services.filter((s) => s.featured);
+
+export function serviceHref(service: Service): string {
+  return service.href ?? `/services/${service.slug}`;
+}
 
 export function findService(slug: string): Service | undefined {
   return services.find((s) => s.slug === slug);

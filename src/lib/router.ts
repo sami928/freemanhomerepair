@@ -34,7 +34,10 @@ export function useRoute(): string {
 
 export function navigate(to: string) {
   const [path, hash] = to.split('#');
-  const target = normalize(path || window.location.pathname);
+  // "/#quote" from the header or mobile bar: if this page has its own quote
+  // form, scroll to it instead of sending the visitor to the home page.
+  const stayHere = hash === 'quote' && document.getElementById(hash);
+  const target = stayHere ? normalize(window.location.pathname) : normalize(path || window.location.pathname);
 
   if (target !== normalize(window.location.pathname)) {
     window.history.pushState({}, '', target + (hash ? `#${hash}` : ''));

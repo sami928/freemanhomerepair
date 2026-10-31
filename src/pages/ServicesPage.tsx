@@ -1,5 +1,5 @@
 import { ArrowRight } from 'lucide-react';
-import { services } from '@/data/services';
+import { services, serviceHref } from '@/data/services';
 import { Link } from '@/components/Link';
 import { PageHero, CtaBanner } from '@/components/Sections';
 import { ButtonLink } from '@/components/Button';
@@ -20,10 +20,12 @@ export function ServicesPage() {
       </PageHero>
       <section className="py-16 sm:py-20">
         <div className="container-x grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {services.map(({ slug, name, summary, jobs, icon: Icon }) => (
+          {services.map((service) => {
+            const { slug, name, summary, jobs, icon: Icon } = service;
+            return (
             <Link
               key={slug}
-              to={`/services/${slug}`}
+              to={serviceHref(service)}
               className="group flex flex-col rounded-xl border border-slate-200 bg-white p-6 transition hover:border-brand-300 hover:shadow-lg"
             >
               <div className="flex items-center gap-3">
@@ -44,7 +46,8 @@ export function ServicesPage() {
                 Learn more <ArrowRight className="h-4 w-4" aria-hidden />
               </span>
             </Link>
-          ))}
+            );
+          })}
         </div>
       </section>
       <CtaBanner />

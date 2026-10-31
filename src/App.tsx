@@ -16,6 +16,8 @@ import { ContactPage } from '@/pages/ContactPage';
 import { ThankYouPage } from '@/pages/ThankYouPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
 import { ReviewsPage, TeamPage, CareersPage } from '@/pages/ExpansionPages';
+import { ChristmasLightsPage } from '@/pages/ChristmasLightsPage';
+import { PATH as CHRISTMAS_PATH, pageMeta as christmasMeta, christmasJsonLd } from '@/data/christmasLights';
 
 type Page = { element: ReactElement; meta: PageMeta };
 
@@ -50,6 +52,11 @@ const staticRoutes: Record<string, () => Page> = {
     element: <ThankYouPage />,
     meta: { title: `Thank You ${suffix}`, description: 'Your request has been received.', noindex: true },
   }),
+  ...(features.holidayLights
+    ? {
+        [CHRISTMAS_PATH]: () => ({ element: <ChristmasLightsPage />, meta: { ...christmasMeta, jsonLd: christmasJsonLd() } }),
+      }
+    : {}),
   ...(features.reviews
     ? {
         '/reviews': () => ({ element: <ReviewsPage />, meta: { title: `Reviews ${suffix}`, description: `What Portland homeowners say about ${site.name}.` } }),
@@ -73,6 +80,11 @@ function resolve(path: string): Page {
 
   const serviceMatch = path.match(/^\/services\/([\w-]+)$/);
   const service = serviceMatch && findService(serviceMatch[1]);
+  // A service with its own landing page: render that page, canonical to its real URL.
+  if (service?.href && staticRoutes[service.href]) {
+    const landing = staticRoutes[service.href]();
+    return { ...landing, meta: { ...landing.meta, canonicalPath: service.href } };
+  }
   if (service) {
     return {
       element: <ServicePage service={service} />,

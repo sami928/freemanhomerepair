@@ -1,6 +1,6 @@
 import { Mail, MapPin, Phone } from 'lucide-react';
 import { site, features, telHref, mailHref } from '@/config/site';
-import { featuredServices } from '@/data/services';
+import { featuredServices, serviceHref } from '@/data/services';
 import { navItems } from '@/routes';
 import { track } from '@/lib/analytics';
 import { Link } from './Link';
@@ -21,7 +21,7 @@ export function Footer() {
           <ul className="mt-4 space-y-2 text-sm">
             {featuredServices.slice(0, 6).map((s) => (
               <li key={s.slug}>
-                <Link to={`/services/${s.slug}`} className="hover:text-white">
+                <Link to={serviceHref(s)} className="hover:text-white">
                   {s.name}
                 </Link>
               </li>
