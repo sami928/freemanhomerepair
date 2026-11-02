@@ -34,7 +34,7 @@ export function Header({ path }: { path: string }) {
       </div>
 
       <div className="container-x flex h-16 items-center justify-between gap-4 lg:h-20">
-        <Link to="/" aria-label={`${site.name} home`}>
+        <Link to="/">
           <Logo />
         </Link>
 

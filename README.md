@@ -19,7 +19,9 @@ npm run build      # typecheck + production build to dist/
 
 3. **Copy.** FAQ answers (`src/data/faqs.ts`) and the About page are placeholders. Confirm pricing and policies.
 4. **Analytics.** GA4 property `G-JDGPSR18GZ` is built in (`src/lib/analytics.ts`); set `VITE_GA_ID` only to use a different one. Call, text and email clicks and quote starts and submissions are tracked as GA4 events. `/thank-you` gives you a URL to count conversions in Google Ads.
-5. **Hosting.** Deep links need an SPA rewrite to `index.html`. The repo includes `public/.htaccess` (Apache/Hostinger), `public/_redirects` (Netlify) and `vercel.json` (Vercel).
+5. **Hosting.** `npm run build` prerenders every page to static HTML (`scripts/prerender.mjs`): each page gets its own title, description, canonical, social tags and structured data in the HTML itself, so search engines and link previews that don't run JavaScript see the right content. It also generates `dist/sitemap.xml`, `dist/404.html`, the routing rules in `dist/.htaccess` (Apache/LiteSpeed — Hostinger) and `dist/_redirects` (Netlify). Upload/deploy the whole `dist/` folder, including the hidden `.htaccess`. The `.htaccess` serves each page at its clean URL, returns a real 404 for unknown URLs, redirects `www.` and trailing-slash URLs, and caches hashed assets for a year. Edit its template in `public/.htaccess`, not the generated copy.
+
+   Adding a page: add it to `staticRoutes` in `src/routeTable.tsx` (or a service in `src/data/services.ts`); the prerender, sitemap and routing rules pick it up automatically.
 
 ## Where to make changes
 

@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { CheckCircle2 } from 'lucide-react';
 import { site } from '@/config/site';
 import { THANK_YOU_NAME_KEY } from '@/components/QuoteForm';
@@ -9,12 +10,15 @@ import { CallButton } from '@/components/ContactLinks';
  * in Google Ads / GA4 ("page_view of /thank-you").
  */
 export function ThankYouPage() {
-  let first = '';
-  try {
-    first = sessionStorage.getItem(THANK_YOU_NAME_KEY) ?? '';
-  } catch {
-    /* ignore */
-  }
+  // Read after mount so the prerendered HTML (no name) matches the first render.
+  const [first, setFirst] = useState('');
+  useEffect(() => {
+    try {
+      setFirst(sessionStorage.getItem(THANK_YOU_NAME_KEY) ?? '');
+    } catch {
+      /* storage unavailable */
+    }
+  }, []);
   return (
     <section className="py-20 sm:py-28">
       <div className="container-x max-w-2xl text-center">

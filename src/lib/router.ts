@@ -16,8 +16,9 @@ function normalize(pathname: string): string {
   return clean === '' ? '/' : clean;
 }
 
-export function useRoute(): string {
-  const [path, setPath] = useState(() => normalize(window.location.pathname));
+/** Current path. `initialPath` is only for build-time prerendering, where there is no window. */
+export function useRoute(initialPath?: string): string {
+  const [path, setPath] = useState(() => initialPath ?? normalize(window.location.pathname));
 
   useEffect(() => {
     const onChange = () => setPath(normalize(window.location.pathname));

@@ -35,7 +35,7 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        sans: ['"Inter Variable"', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         // Serif to match the logo wordmark.
         display: ['"Noto Serif"', 'Georgia', 'ui-serif', 'serif'],
       },
