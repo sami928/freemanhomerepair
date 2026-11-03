@@ -17,31 +17,45 @@ import { PATH as CHRISTMAS_PATH, pageMeta as christmasMeta, christmasJsonLd } fr
 export type Page = { element: ReactElement; meta: PageMeta };
 
 const suffix = `| ${site.name}`;
+/** Shorter brand for long, keyword-first titles; Google shows the site name above results anyway. */
+const shortSuffix = '| Freeman';
 
 /** Static routes. Add a page by adding an entry here (and to navItems in routes.ts if it belongs in the nav). */
 const staticRoutes: Record<string, () => Page> = {
   '/': () => ({
     element: <HomePage />,
     meta: {
-      title: `Portland Handyman & Home Repair Services ${suffix}`,
-      description: `Reliable handyman, home repair and maintenance across the Portland metro. Upfront pricing, no job too small. Call ${site.phone.display} or get a free quote online.`,
+      title: `Handyman in Portland, OR ${suffix}`,
+      description: `Portland handyman for home repairs and maintenance — drywall, painting, fixtures, doors, decks and more. Upfront pricing, no job too small. ${site.phone.display}.`,
     },
   }),
   '/services': () => ({
     element: <ServicesPage />,
-    meta: { title: `Handyman Services in Portland, OR ${suffix}`, description: 'Drywall, painting, minor plumbing, fixtures, doors, decks, fences and general repairs across the Portland metro.' },
+    meta: {
+      title: `Home Repair & Maintenance Services in Portland ${shortSuffix}`,
+      description: 'Every home repair and maintenance service we offer in the Portland metro, from drywall and painting to gutters, TV mounting and holiday lights. Free quotes.',
+    },
   }),
   '/service-area': () => ({
     element: <ServiceAreaPage />,
-    meta: { title: `Service Area — Portland Metro ${suffix}`, description: 'Serving Portland, Beaverton, Hillsboro, Tigard, Lake Oswego, Gresham, Vancouver WA and more.' },
+    meta: {
+      title: `Service Area: Portland, Beaverton & Lake Oswego ${shortSuffix}`,
+      description: 'Home repair and maintenance in Portland, Beaverton, Hillsboro, Tigard, Tualatin, Lake Oswego, West Linn, Milwaukie, Gresham, Happy Valley and Vancouver, WA.',
+    },
   }),
   '/about': () => ({
     element: <AboutPage />,
-    meta: { title: `About Us ${suffix}`, description: `${site.name} is a local Portland home repair and maintenance company.` },
+    meta: {
+      title: `About Us: Locally Owned in Portland ${suffix}`,
+      description: `Meet ${site.name}: a locally owned Portland home repair and maintenance company that shows up on time, prices upfront and does work we’re proud of.`,
+    },
   }),
   '/contact': () => ({
     element: <ContactPage />,
-    meta: { title: `Contact Us — Free Quote ${suffix}`, description: `Call, text or request a free quote. We reply ${site.responseTime}.` },
+    meta: {
+      title: `Contact Us for a Free Home Repair Quote ${shortSuffix}`,
+      description: `Call or text ${site.phone.display}, email us, or request a free home repair quote online. We reply ${site.responseTime}. Serving the Portland metro.`,
+    },
   }),
   '/thank-you': () => ({
     element: <ThankYouPage />,
@@ -83,7 +97,7 @@ export function resolve(path: string): Page {
   if (service) {
     return {
       element: <ServicePage service={service} />,
-      meta: { title: `${service.name} in Portland, OR ${suffix}`, description: `${service.summary} Free quotes across the Portland metro.` },
+      meta: { title: `${service.seo.title} ${shortSuffix}`, description: service.seo.description, noindex: service.noindex },
     };
   }
 

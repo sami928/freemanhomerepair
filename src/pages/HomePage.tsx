@@ -40,7 +40,7 @@ export function HomePage() {
               Serving Portland &amp; the surrounding metro
             </p>
             <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
-              Home repairs done right, <span className="text-accent-400">the first time.</span>
+              Portland handyman services, <span className="text-accent-400">done right the first time.</span>
             </h1>
             <p className="mt-5 hidden max-w-xl text-lg leading-relaxed text-brand-100 sm:block sm:text-xl">
               From leaky faucets to sticky doors to the whole honey-do list — Freeman Home Services handles the

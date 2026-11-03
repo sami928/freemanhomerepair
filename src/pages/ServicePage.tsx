@@ -11,7 +11,7 @@ export function ServicePage({ service }: { service: Service }) {
   const others = services.filter((s) => s.slug !== service.slug && s.slug !== 'other').slice(0, 6);
   return (
     <>
-      <PageHero eyebrow="Portland handyman services" title={service.name} intro={service.description}>
+      <PageHero eyebrow={service.name} title={service.seo.h1} intro={service.description}>
         <div className="mt-8">
           <CallButton size="lg" location={`service_${service.slug}`} label="Call for a quick quote" />
         </div>
@@ -22,7 +22,7 @@ export function ServicePage({ service }: { service: Service }) {
           <div>
             {service.jobs.length > 0 && (
               <>
-                <h2 className="font-display text-2xl font-bold text-slate-900">Common {service.name.toLowerCase()} jobs</h2>
+                <h2 className="font-display text-2xl font-bold text-slate-900">Jobs we handle</h2>
                 <ul className="mt-6 grid gap-3 sm:grid-cols-2">
                   {service.jobs.map((j) => (
                     <li key={j} className="flex items-start gap-2.5 rounded-lg border border-slate-200 bg-white p-4 text-slate-800">
@@ -47,7 +47,7 @@ export function ServicePage({ service }: { service: Service }) {
             </div>
           </div>
           <div id="quote" className="scroll-mt-28 lg:sticky lg:top-32 lg:self-start">
-            <QuoteForm key={service.slug} source={`service_${service.slug}`} defaultService={service.slug} title={`Get a ${service.name.toLowerCase()} quote`} />
+            <QuoteForm key={service.slug} source={`service_${service.slug}`} defaultService={service.slug} title={`Free quote: ${service.name}`} />
           </div>
         </div>
       </section>

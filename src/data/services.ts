@@ -34,11 +34,25 @@ export type Service = {
   featured?: boolean;
   /** Dedicated landing page that replaces the generic /services/<slug> page. */
   href?: string;
+  /**
+   * Search tagging. Each page targets one search term no other page uses, so
+   * pages don't compete with each other. Keep titles under ~50 characters
+   * (" | Freeman" is added) and descriptions under 160.
+   */
+  seo: { title: string; h1: string; description: string };
+  /** Thin catch-all pages: keep out of search results. */
+  noindex?: boolean;
 };
 
 export const services: Service[] = [
   {
     slug: 'general-repairs',
+    seo: {
+      title: 'Small Home Repairs & Honey-Do Lists in Portland',
+      h1: 'Small home repairs & honey-do lists in Portland',
+      description:
+        'Got a list of small fixes? We handle the whole honey-do list in one visit — cabinets, railings, squeaky floors, caulking and more. Free Portland quotes.',
+    },
     name: 'General Repairs',
     icon: Hammer,
     summary: 'The honey-do list, handled — all those small fixes in one visit.',
@@ -49,6 +63,12 @@ export const services: Service[] = [
   },
   {
     slug: 'drywall-repair',
+    seo: {
+      title: 'Drywall Repair & Patching in Portland, OR',
+      h1: 'Drywall repair & patching in Portland',
+      description:
+        'Drywall repair in Portland: holes, cracks, nail pops and water-damaged ceilings patched, textured and painted to match. Free quotes, no job too small.',
+    },
     name: 'Drywall & Patching',
     icon: Layers,
     summary: 'Holes, cracks and water damage patched, textured and painted to match.',
@@ -59,6 +79,12 @@ export const services: Service[] = [
   },
   {
     slug: 'painting',
+    seo: {
+      title: 'Interior Painting in Portland, OR',
+      h1: 'Interior painting in Portland',
+      description:
+        'Interior painting for single rooms, accent walls, trim, doors and pre-sale touch-ups in Portland. Clean lines, protected floors and an upfront price.',
+    },
     name: 'Interior Painting',
     icon: PaintRoller,
     summary: 'Rooms, trim, doors and touch-ups with clean lines and no mess.',
@@ -69,6 +95,12 @@ export const services: Service[] = [
   },
   {
     slug: 'plumbing-fixes',
+    seo: {
+      title: 'Faucet, Toilet & Disposal Repair in Portland',
+      h1: 'Faucet, toilet & garbage disposal repair in Portland',
+      description:
+        'Leaky faucet or running toilet? We repair and replace faucets, toilets, garbage disposals and supply lines across Portland. Free quotes, fast scheduling.',
+    },
     name: 'Minor Plumbing',
     icon: Droplets,
     summary: 'Leaky faucets, running toilets, garbage disposals and fixture swaps.',
@@ -79,6 +111,12 @@ export const services: Service[] = [
   },
   {
     slug: 'electrical-fixtures',
+    seo: {
+      title: 'Ceiling Fan & Light Fixture Install in Portland',
+      h1: 'Light fixture & ceiling fan installation in Portland',
+      description:
+        'Light fixture swaps, ceiling fan installation, smart thermostats, doorbells and smoke detectors installed across the Portland metro. Free quotes.',
+    },
     name: 'Fixtures & Lighting',
     icon: Plug,
     summary: 'Light fixtures, ceiling fans, switches and smart-home devices.',
@@ -89,6 +127,12 @@ export const services: Service[] = [
   },
   {
     slug: 'doors-windows',
+    seo: {
+      title: 'Door Repair & Weatherstripping in Portland, OR',
+      h1: 'Door repair & window weatherstripping in Portland',
+      description:
+        'Sticking or drafty doors and windows? We adjust, plane, rehang and weatherstrip, install locks and storm doors, and repair screens in Portland.',
+    },
     name: 'Doors & Windows',
     icon: DoorOpen,
     summary: 'Doors that stick, drafty windows, new hardware and screens.',
@@ -99,6 +143,12 @@ export const services: Service[] = [
   },
   {
     slug: 'decks-fences',
+    seo: {
+      title: 'Deck & Fence Repair in Portland, OR',
+      h1: 'Deck & fence repair in Portland',
+      description:
+        'Deck and fence repair in Portland: rotted board and post replacement, sagging gates, railings, plus cleaning, staining and sealing. Free quotes.',
+    },
     name: 'Decks & Fences',
     icon: Fence,
     summary: 'Board replacement, gate repair, staining and sealing.',
@@ -109,6 +159,12 @@ export const services: Service[] = [
   },
   {
     slug: 'bathroom-kitchen',
+    seo: {
+      title: 'Bathroom & Kitchen Updates in Portland, OR',
+      h1: 'Bathroom & kitchen updates in Portland',
+      description:
+        'Re-caulking, re-grouting, tile repair, vanity and mirror installs, backsplashes and new cabinet hardware for Portland kitchens and bathrooms.',
+    },
     name: 'Kitchen & Bath Updates',
     icon: ShowerHead,
     summary: 'Re-caulking, tile repair, hardware, vanities and backsplashes.',
@@ -119,6 +175,12 @@ export const services: Service[] = [
   },
   {
     slug: 'mounting-installation',
+    seo: {
+      title: 'TV Mounting & Shelf Installation in Portland',
+      h1: 'TV mounting & shelf installation in Portland',
+      description:
+        'TV mounting, floating shelves, closet systems, blinds, curtain rods, grab bars and childproofing — mounted level and secure. Portland metro, free quotes.',
+    },
     name: 'Mounting & Installation',
     icon: Tv,
     summary: 'TVs, shelving, curtain rods, closet systems and more.',
@@ -128,6 +190,12 @@ export const services: Service[] = [
   },
   {
     slug: 'exterior-maintenance',
+    seo: {
+      title: 'Gutter Cleaning & Moss Removal in Portland, OR',
+      h1: 'Gutter cleaning, moss removal & exterior repair in Portland',
+      description:
+        'Gutter cleaning and repair, roof and walkway moss removal, pressure washing, siding, trim and dry rot repair for Portland homes. Free quotes.',
+    },
     name: 'Exterior Maintenance',
     icon: Home,
     summary: 'Gutters, siding repair, pressure washing and moss removal.',
@@ -137,6 +205,12 @@ export const services: Service[] = [
   },
   {
     slug: 'home-maintenance',
+    seo: {
+      title: 'Seasonal Home Maintenance in Portland, OR',
+      h1: 'Seasonal home maintenance in Portland',
+      description:
+        'Fall winterizing and spring tune-ups for Portland homes: filters, detectors, caulking and seals checked and handled before small problems get expensive.',
+    },
     name: 'Seasonal Maintenance',
     icon: ClipboardCheck,
     summary: 'Fall and spring tune-ups that catch small problems early.',
@@ -146,6 +220,12 @@ export const services: Service[] = [
   },
   {
     slug: 'holiday-lighting',
+    seo: {
+      title: 'Christmas Light Installation in Portland, OR',
+      h1: 'Christmas light installation in Portland',
+      description:
+        'Govee Prism permanent Christmas lights installed along your roofline in Portland.',
+    },
     name: 'Christmas & Permanent Lighting',
     icon: Sparkles,
     summary: 'Govee Prism permanent lights installed along your roofline — holidays and year-round.',
@@ -156,6 +236,13 @@ export const services: Service[] = [
   },
   {
     slug: 'other',
+    seo: {
+      title: 'Other Home Repairs in Portland',
+      h1: 'Other home repairs',
+      description:
+        'Not on our list? Ask — if we can’t do it, we’ll point you to someone who can.',
+    },
+    noindex: true,
     name: 'Something Else',
     icon: Wrench,
     summary: 'Not on the list? Ask — if we can’t do it, we’ll point you to who can.',

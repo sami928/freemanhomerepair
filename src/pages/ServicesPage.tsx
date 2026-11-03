@@ -10,7 +10,7 @@ export function ServicesPage() {
     <>
       <PageHero
         eyebrow="Our services"
-        title="Home repair & maintenance, all under one roof"
+        title="Home repair & maintenance services in Portland"
         intro="If it’s broken, worn out, or on your to-do list, there’s a good chance we can handle it. Here’s what we do most."
       >
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">

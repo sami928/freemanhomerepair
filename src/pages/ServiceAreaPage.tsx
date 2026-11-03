@@ -15,7 +15,7 @@ export function ServiceAreaPage() {
     <>
       <PageHero
         eyebrow="Service area"
-        title="Serving homes across the Portland metro"
+        title="Home repairs in Portland, Beaverton, Lake Oswego & beyond"
         intro="From the West Hills to Gresham and from Vancouver down to Oregon City, our team is nearby and ready to help."
       />
       <section className="py-16 sm:py-20">

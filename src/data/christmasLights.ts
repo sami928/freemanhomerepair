@@ -44,8 +44,8 @@ export const christmasFaqs: Faq[] = [
 ];
 
 export const pageMeta = {
-  title: `Christmas Light Installation in Portland, OR | ${site.name}`,
-  description: `Professional Christmas light installation in Portland, OR. We install Govee Prism permanent outdoor lights — app-controlled, weatherproof, up year-round. Free estimates: ${site.phone.display}.`,
+  title: 'Christmas Light Installation in Portland, OR | Freeman',
+  description: 'Christmas light installation in Portland, OR. We install Govee Prism permanent outdoor lights — app-controlled, weatherproof and up year-round. Free estimates.',
 };
 
 export function christmasJsonLd(): object[] {
